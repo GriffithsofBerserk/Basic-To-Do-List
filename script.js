@@ -30,7 +30,7 @@ const addItem = (workname) => {
     return userListDOM = document.querySelector('#userList')
 }
 
-let deleteText = document.querySelector('#user')
+let deleteText = document.querySelector('#userList')
 deleteText.addEventListener('click',formDelete)
 
 function formDelete(event){
