@@ -3,6 +3,7 @@
 let taskDOM = document.querySelector('#task')
 let addDOM = document.querySelector('#liveToastBtn')
 let list = document.querySelector('#list')
+let toastDOM = document.querySelector('#liveToast')
 
 addDOM.addEventListener('click',newElement)
 
@@ -24,6 +25,9 @@ function newElement(event){
 
     li.appendChild(spanDOM)
     list.appendChild(li)
+    $(".success").toast("show");
+    }else{
+        $(".error").toast("show");
     }
     taskDOM.value =""
 }
