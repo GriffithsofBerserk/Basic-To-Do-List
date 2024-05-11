@@ -31,3 +31,11 @@ function newElement(event){
     }
     taskDOM.value =""
 }
+
+list.addEventListener("click", function(task) 
+{
+  if (task.target.tagName === "LI") 
+  {
+    task.target.classList.toggle("checked");
+  }
+});
