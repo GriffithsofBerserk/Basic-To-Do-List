@@ -26,6 +26,11 @@ function newElement(event) {
 
         spanDOM.addEventListener('click', function() {
             li.remove()
+            let index = inputs.indexOf(task);
+                if (index > -1) {
+                    inputs.splice(index, 1);
+                    localStorage.setItem("inputs", JSON.stringify(inputs))
+                }
         });
 
         li.appendChild(spanDOM)
@@ -35,13 +40,15 @@ function newElement(event) {
         $(".error").toast("show")
     }
     taskDOM.value =""
+
+    list.addEventListener("click", function(task) {
+        if (task.target.tagName === "LI") {
+            task.target.classList.toggle("checked")
+        }
+    })
 }
 
-list.addEventListener("click", function(task) {
-    if (task.target.tagName === "LI") {
-        task.target.classList.toggle("checked")
-    }
-})
+
 
 window.onload = function() {
     let storedInputs = localStorage.getItem("inputs")
@@ -55,6 +62,20 @@ window.onload = function() {
             spanDOM.textContent = "x"
             li.appendChild(spanDOM)
             list.appendChild(li)
+            spanDOM.addEventListener('click', function() {
+                li.remove();
+                // inputs dizisinden de görevi silme
+                let index = inputs.indexOf(task);
+                if (index > -1) {
+                    inputs.splice(index, 1);
+                    localStorage.setItem("inputs", JSON.stringify(inputs));
+                }
+            })
+            list.addEventListener("click", function(task) {
+                if (task.target.tagName === "LI") {
+                    task.target.classList.toggle("checked")
+                }
+            })
         })
     }
 }
